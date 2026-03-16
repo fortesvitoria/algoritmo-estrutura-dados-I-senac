@@ -4,8 +4,9 @@ lista = Lista()
 
 lista.imprimir()
 
-lista.add("João")
-lista.add("Antônio")
-lista.add("Gabriel")
-lista.add("Antony")
-lista.add("Lorenzo")
+lista.add("D")
+lista.add("A")
+lista.add("C")
+lista.add("B")
+
+

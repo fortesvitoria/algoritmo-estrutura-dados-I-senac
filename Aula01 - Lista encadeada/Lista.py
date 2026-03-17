@@ -33,7 +33,6 @@ class Lista:
 
             self.imprimir()
 
-
     def imprimir(self):
         print("\n---- Lista encadeada ----\n")
         if self.inicio is None:
@@ -43,3 +42,31 @@ class Lista:
         while aux: 
             print(aux.dado)
             aux = aux.prox
+        print(f"{"-"*25}")
+
+    def remover(self,valor):
+        removeu = False
+        if self.inicio == None:
+            print("XXXX Lista vazia XXXX\n")
+        else: 
+            #verifica se o valor está na primeira posição
+            if valor  == self.inicio.dado: 
+                self.inicio = self.inicio.prox # o inicio passa a ser o proximo do inicio
+                removeu = True
+            else: # quando a lista nao for vazia e quando o valor não é igual ao primeiro - testa a partir do segundo elemento
+                ant = self.inicio #inicio ja testado
+                aux = self.inicio.prox #testando o segundo elemento
+                while aux: #enquanto aux for diferente de null/enquanto existir
+                    if valor == aux.dado:
+                        ant.prox = aux.prox #elemento anterior aponta para o proximo do que sera deletado
+                        removeu = True
+                        break
+                    else:
+                        # auxiliar nao é igual ao valor que quero remover, testo o proximo. estrutura para seguir percorrendo a lista
+                        ant  = aux
+                        aux = aux.prox
+            if removeu:
+                print(f"{valor} - Elemento removido!")
+            else:
+                print(f"{valor} - Não encontrado!")
+            self.imprimir()

@@ -5,25 +5,25 @@ A inserção deve ser por ordem decrescente de idade.
 
 '''
 
-# from Lista import Lista
+from Lista import Lista
 
 #imports codigo professor
 from ListaCodigoProfessor import Lista
 from Pessoa import Pessoa
 
 #teste Lista.py
-# lista = Lista() 
+lista = Lista() 
 
-# lista.imprimir()
+lista.imprimir()
 
-# lista.add("Vitoria", 34)
-# lista.add("Eduardo", 40)
-# lista.add("Fran", 23)
-# lista.add("Gabriel", 6)
+lista.add("Vitoria", 34)
+lista.add("Eduardo", 40)
+lista.add("Fran", 23)
+lista.add("Gabriel", 6)
 
-# lista.remover("Fran")
-# lista.remover("Eduardo")
-# lista.remover("Lucas")
+lista.remover("Fran")
+lista.remover("Eduardo")
+lista.remover("Lucas")
 
 
 #Teste ListaCodigoProfessor.py

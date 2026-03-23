@@ -3,6 +3,8 @@ Exercício 01:
 Construa uma lista encadeada de pessoas em que cada nó possui nome e idade.
 A inserção deve ser por ordem decrescente de idade.
 
+CODIGO PROFESSOR
+
 '''
 
 from Pessoa import Pessoa
@@ -11,32 +13,31 @@ class Lista:
     def __init__(self):
         self.inicio = None #Inicia a lista com valor nulo
 
-    def add(self, nome, idade): 
-        pessoa = Pessoa( nome, idade) #guarda memoria uma instancia da classe pessoa com nome e idade
+    def add(self, novaPessoa = Pessoa("Sem Nome", 0)): #passa a instancia de uma pessoa com valor default
 
         if self.inicio is None: #verifica se vazia 
-            self.inicio = pessoa #se estiver vazia, add o valor da instacia da classe Pessoa
+            self.inicio = novaPessoa #se estiver vazia, add o valor da instacia da classe Pessoa
 
         else:
-            if pessoa.idade > self.inicio.idade: #se o idade do pessoa é maior que inicio 
-                pessoa.prox = self.inicio #prox da pessoa recebe o que esta no inicio 
-                self.inicio = pessoa #inicio recebe pessoa
+            if novaPessoa.idade > self.inicio.idade: #se o idade do pessoa é maior que inicio 
+                novaPessoa.prox = self.inicio #prox da pessoa recebe o que esta no inicio 
+                self.inicio = novaPessoa #inicio recebe pessoa
 
             else: 
                 ant = self.inicio #
                 aux = self.inicio.prox #aux recebe o prox do inicio 
 
                 while aux : #enquanto existir aux, continua
-                    if pessoa.idade > aux.idade: #Se a idade da pessoa for menor que o idade do auxiliar 
-                        pessoa.prox = aux #proximo recebe aux
-                        ant.prox = pessoa #anterior do proximo recebe pessoa 
+                    if novaPessoa.idade > aux.idade: #Se a idade da pessoa for menor que o idade do auxiliar 
+                        novaPessoa.prox = aux #proximo recebe aux
+                        ant.prox = novaPessoa #anterior do proximo recebe pessoa 
                         break 
                     else:
                         ant = aux #anterior recebe aux
                         aux = aux.prox #aux recebe o proximo
 
                 if aux == None:
-                    ant.prox = pessoa #proximo do anterior recebe pessoa
+                    ant.prox = novaPessoa #proximo do anterior recebe pessoa
 
             self.imprimir()
 

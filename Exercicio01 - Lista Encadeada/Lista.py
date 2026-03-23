@@ -27,7 +27,7 @@ class Lista:
                 aux = self.inicio.prox #aux recebe o prox do inicio 
 
                 while aux : #enquanto existir aux, continua
-                    if pessoa.idade > aux.idade: #Se a idade da pessoa for menor que o idade do auxiliar 
+                    if pessoa.idade > aux.idade: #Se a idade da pessoa for maior que o idade do auxiliar 
                         pessoa.prox = aux #proximo recebe aux
                         ant.prox = pessoa #anterior do proximo recebe pessoa 
                         break 

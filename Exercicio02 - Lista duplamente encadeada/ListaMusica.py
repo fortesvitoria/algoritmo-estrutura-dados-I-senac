@@ -22,33 +22,92 @@ class ListaMusica:
         self.fim = musica
         self.imprimir()
 
-    def imprimir(self):
-        print("\n---- Lista duplamente encadeada por ordem de chegada ----\n")
+    #add no parametro uma musica default
+    def addCrescente(self, musica = Musica("Sem Título", "Desconhecido", 0)):
+
         if self.inicio is None:
-            print("XXXX Lista vazia XXXX\n")
+            self.inicio = musica
+            self.fim = musica
+        else:
+            if musica.titulo < self.inicio.titulo: 
+                musica.proximo = self.inicio
+                self.inicio.anterior = musica
+                self.inicio = musica
+            else:
+                ant = self.inicio
+                aux = self.inicio.proximo
+                while aux:
+                    if musica.titulo < aux.titulo: 
+                        ant.proximo = musica
+                        musica.anterior = ant
+                        musica.proximo = aux
+                        aux.anterior = musica
+                        break
+                    else:
+                        ant = aux
+                        aux = aux.proximo
+                if aux is None:
+                    #add no fim da lista e no anterior aponta para o ultimo da lista
+                    ant.proximo = musica
+                    musica.anterior = ant  
+                    self.fim = musica   
+        
+        self.imprimir()  
+        
+
+    def imprimir(self):
+        print("\n---- Lista duplamente encadeada ----\n")
+        if self.inicio is None:
+            print("XXXX Playlist vazia XXXX\n")
             return 
         aux = self.inicio
         while aux: 
-            print(aux.titulo)
+            print(aux)
             aux = aux.proximo
-        print(f"{"-"*60}")
-    
-    # def addCrescente(self, titulo, autor, duracao):
-    #     musica = Musica(titulo, autor, duracao)
-
-    #     if self.inicio is None:
-    #         self.inicio = musica
-    #     else:
-    #         if musica.titulo > self.inicio.titulo: # se o titulo da musica for maior que o titulo do inicio
-    #             musica.proximo = self.inicio
-    #             self.inicio = musica
-            
-    #         else: 
-                
-    #         self.fim.proximo = musica
-    #         musica.anterior = self.fim
-        
-    #     self.fim = musica
-    #     self.imprimir()
+        print(f"{"-"*50}")
 
     
+    def imprimirReverso(self):
+        print("\n---- Lista duplamente encadeada ordem reversa ----\n")
+        if self.inicio is None:
+            print("XXXX Playlist vazia XXXX\n")
+            return 
+        aux = self.fim
+        while aux: 
+            print(aux)
+            aux = aux.anterior
+        print(f"{"-"*50}")
+    
+    def remover(self,valor):
+        removeu = False
+        if self.inicio == None:
+            print("XXXX Playlist vazia XXXX\n")
+        else: 
+            if valor  == self.inicio.titulo: 
+                self.inicio = self.inicio.proximo
+                if self.inicio != None:
+                    self.inicio.anterior = None 
+                else:
+                    self.fim = None
+                removeu = True
+            else:
+                #variavel ant é variavel anteior, diferente do atributo anterior da classe nó
+                ant = self.inicio 
+                aux = self.inicio.proximo 
+                while aux:
+                    if valor == aux.titulo:
+                        ant.proximo = aux.proximo 
+                        if ant.proximo != None:
+                            aux.proximo.anterior = ant 
+                        else:
+                            self.fim = ant
+                        removeu = True
+                        break
+                    else:
+                        ant  = aux
+                        aux = aux.proximo
+            if removeu:
+                print(f"{valor} - Elemento removido!")
+            else:
+                print(f"{valor} - Não encontrado!")
+            self.imprimir()

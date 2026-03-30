@@ -18,6 +18,35 @@ class ListaDuplamenteEncadeada:
         self.fim = nodo
         self.imprimir()
 
+    def addCrescente(self, valor):
+        nodo = No(valor)
+        if self.inicio is None:
+            self.inicio = nodo
+            self.fim = nodo
+        else:
+            if nodo.dado < self.inicio.dado:
+                nodo.proximo = self.inicio
+                self.inicio.anterior = nodo 
+                self.inicio = nodo
+            else:
+                ant = self.inicio
+                aux = self.inicio.proximo
+                while aux:
+                    if nodo.dado < aux.dado:
+                        ant.proximo = nodo
+                        nodo.anterior = ant
+                        nodo.proximo = aux
+                        aux.anterior = nodo
+                        break
+                    else:
+                        ant = aux
+                        aux = aux.proximo
+                if aux == None:
+                    ant.proximo = nodo
+                    nodo.anterior = ant
+                    self.fim = nodo        
+        self.imprimir()
+
     def imprimir(self):
         print("\n---- Lista duplamente encadeada por ordem de chegada ----\n")
         if self.inicio is None:
@@ -27,7 +56,7 @@ class ListaDuplamenteEncadeada:
         while aux: 
             print(aux.dado)
             aux = aux.proximo
-        print(f"{"-"*60}")
+        print(f"{"-"*50}")
 
 
     def imprimirReverso(self):
@@ -39,7 +68,7 @@ class ListaDuplamenteEncadeada:
         while aux: 
             print(aux.dado)
             aux = aux.anterior
-        print(f"{"-"*60}")
+        print(f"{"-"*50}")
 
 
     def remover(self,valor):

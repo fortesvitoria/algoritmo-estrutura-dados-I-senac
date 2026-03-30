@@ -4,22 +4,22 @@ Exercício: implemente uma playlist musical utilizando lista duplamente encadead
 '''
 from Musica import Musica
 
-class ListaDuplamenteEncadeada:
+class ListaMusica:
     def __init__(self):
         self.inicio = None
         self.fim = None
     
-    def add(self, valor):
+    def add(self, titulo, autor, duracao):
         #criando lista por ordem de chegada
-        nodo = No(valor)
+        musica = Musica(titulo, autor, duracao)
 
         if self.inicio is None:
-            self.inicio = nodo        
+            self.inicio = musica        
         else:
-            self.fim.proximo = nodo #proximo do fim recebe quem acaba de chegar
-            nodo.anterior = self.fim #quem acaba de chegar aponta pra quem era o fim
+            self.fim.proximo = musica #proximo do fim recebe quem acaba de chegar
+            musica.anterior = self.fim #quem acaba de chegar aponta pra quem era o fim
         
-        self.fim = nodo
+        self.fim = musica
         self.imprimir()
 
     def imprimir(self):
@@ -29,6 +29,26 @@ class ListaDuplamenteEncadeada:
             return 
         aux = self.inicio
         while aux: 
-            print(aux.dado)
+            print(aux.titulo)
             aux = aux.proximo
         print(f"{"-"*60}")
+    
+    # def addCrescente(self, titulo, autor, duracao):
+    #     musica = Musica(titulo, autor, duracao)
+
+    #     if self.inicio is None:
+    #         self.inicio = musica
+    #     else:
+    #         if musica.titulo > self.inicio.titulo: # se o titulo da musica for maior que o titulo do inicio
+    #             musica.proximo = self.inicio
+    #             self.inicio = musica
+            
+    #         else: 
+                
+    #         self.fim.proximo = musica
+    #         musica.anterior = self.fim
+        
+    #     self.fim = musica
+    #     self.imprimir()
+
+    

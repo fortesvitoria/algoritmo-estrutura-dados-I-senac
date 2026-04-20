@@ -15,3 +15,55 @@ e a vaga deve ir para o primeiro apartamento da fila. Este apartamento que receb
 vaga de garagem, deve ir para a Lista Encadeada, que deverá estar ordenada pelo número da vaga.
 
 '''
+
+from Apartamento import Apartamento
+
+class Lista:
+    def __init__(self):
+        self.inicio = None 
+
+    def add(self, apartamento): 
+        if self.inicio is None:
+            self.inicio = apartamento
+        else: 
+            aux = self.inicio
+            while aux is not None:
+                aux = aux.prox
+            aux.prox = apartamento
+        self.imprimir()
+
+    def imprimir(self):
+        print("\n---- Lista de apartamentos ----\n")
+        if self.inicio is None:
+            print("---- Lista de apartamentos vazia ----\n")
+            return 
+        aux = self.inicio
+        while aux: 
+            print(aux.dado)
+            aux = aux.prox
+        print(f"{"-"*25}")
+
+    def remover(self,valor):
+        removeu = False
+        if self.inicio == None:
+            print("XXXX Lista vazia XXXX\n")
+        else: 
+            if valor  == self.inicio.dado: 
+                self.inicio = self.inicio.prox 
+                removeu = True
+            else: 
+                ant = self.inicio
+                aux = self.inicio.prox 
+                while aux: 
+                    if valor == aux.dado:
+                        ant.prox = aux.prox 
+                        removeu = True
+                        break
+                    else:                       
+                        ant  = aux
+                        aux = aux.prox
+            if removeu:
+                print(f"{valor} - Elemento removido!")
+            else:
+                print(f"{valor} - Não encontrado!")
+            self.imprimir()

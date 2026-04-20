@@ -1,5 +1,5 @@
 '''
-1) Construa a classe Torre e a classe Apartamento. 
+--> 1) Construa a classe Torre e a classe Apartamento. 
 A classe Torre deve possuir os atributos id, nome e endereço. 
 A classe Apartamento deve conter os atributos, id, número do
 apartamento, número da vaga de garagem e torre.
@@ -18,8 +18,12 @@ vaga de garagem, deve ir para a Lista Encadeada, que deverá estar ordenada pelo
 from Torre import Torre
 
 class Apartamento:
-    def __init__(self, id, numeroApt, numeroVaga, torre = Torre()):
+    def __init__(self, id, numeroApt, numeroVaga = "Aguardando vaga", torre = Torre()):
         self.__id = id
         self.numeroApt = numeroApt
         self.numeroVaga = numeroVaga
         self.torre = torre
+        self.prox = None 
+    
+    def __str__(self):
+        return f"ID: {self.__id} - Número do Apartamento: {self.numeroApt} - Número da Vaga: {self.numeroVaga} - Torre: {str(self.torre)}"

@@ -1,5 +1,5 @@
 '''
-1) Construa a classe Torre e a classe Apartamento. 
+--> 1) Construa a classe Torre e a classe Apartamento. 
 A classe Torre deve possuir os atributos id, nome e endereço. 
 A classe Apartamento deve conter os atributos, id, número do
 apartamento, número da vaga de garagem e torre.
@@ -23,4 +23,4 @@ class Torre:
         self.endereco = endereco
 
     def __str__(self): 
-        return f"ID: {self.__id} - Nome: {self.__nome} - Endereço: {self.__endereco}"
+        return f"ID: {self.__id} - Nome: {self.nome} - Endereço: {self.endereco}"

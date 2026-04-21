@@ -50,7 +50,13 @@ def fibonacci2(a,b,n):
     print(a)
     fibonacci2(b, a+b, n) #o a é o b e o b é a soma de ambos, ou seja, o proximo numero da sequencia
 
-valor = int(input("Informe um valor: "))
+# valor = int(input("Informe um valor: "))
 
-fibonacci2(0,1,valor)
+# fibonacci2(0,1,valor)
 
+'''
+Exericicios:
+1) Implemente uma funcao recursiva para calculo de potencia
+2) Implemente uma funcao recursiva para contagem regressiva
+3) Implemente uma funcao recursiva para inverter uma string
+'''

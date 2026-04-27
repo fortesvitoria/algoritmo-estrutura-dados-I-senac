@@ -23,4 +23,4 @@ class Torre:
         self.endereco = endereco
 
     def __str__(self): 
-        return f"ID: {self.__id} - Nome: {self.nome} - Endereço: {self.endereco}"
+        return f"Nome: {self.nome} - Endereço: {self.endereco}"

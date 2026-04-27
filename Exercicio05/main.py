@@ -32,8 +32,8 @@ apt2 = Apartamento(102, "102", 5, t1)  # Já tem vaga 5
 apt3 = Apartamento(201, "201", "Aguardando", t1) # Sem vaga
 
 # Adicionando na lista ordenada (o 102 deve vir antes do 101)
-lista_vagas.add_ordenado(apt1)
-lista_vagas.add_ordenado(apt2)
+lista_vagas.add(apt1)
+lista_vagas.add(apt2)
 fila_espera.add(apt3)
 
 print("ESTADO INICIAL:")

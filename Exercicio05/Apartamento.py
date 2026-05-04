@@ -18,8 +18,8 @@ vaga de garagem, deve ir para a Lista Encadeada, que deverá estar ordenada pelo
 from Torre import Torre
 
 class Apartamento:
-    def __init__(self, id, numeroApt, numeroVaga = "Aguardando vaga", torre = None):
-        self.__id = id
+    def __init__(self, id, numeroApt, torre, numeroVaga = "Aguardando vaga"):
+        self.id = id
         self.numeroApt = numeroApt
         self.numeroVaga = numeroVaga
         self.torre = torre

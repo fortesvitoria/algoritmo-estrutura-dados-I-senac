@@ -23,13 +23,17 @@ class Lista:
         self.inicio = None 
 
     def add(self, apartamento): 
-        if self.inicio is None:
+        if self.inicio is None or apartamento.numeroVaga < self.inicio.numeroVaga:
+            apartamento.prox = self.inicio
             self.inicio = apartamento
-        else: 
-            aux = self.inicio
-            while aux is not None:
-                aux = aux.prox
-            aux.prox = apartamento
+            return
+        ant = self.inicio
+        aux = self.inicio.prox
+        while aux is not None and apartamento.numeroVaga > aux.numeroVaga:
+                ant = aux
+                aux = aux.prox  
+        ant.prox = apartamento
+        apartamento.prox = aux
         self.imprimir()
 
     def imprimir(self):
@@ -39,23 +43,23 @@ class Lista:
             return 
         aux = self.inicio
         while aux: 
-            print(aux.dado)
+            print(aux)
             aux = aux.prox
-        print(f"{"-"*25}")
+        print("-" * 25)
 
-    def remover(self,valor):
+    def remover(self,numeroApt):
         removeu = False
         if self.inicio == None:
             print("XXXX Lista vazia XXXX\n")
         else: 
-            if valor  == self.inicio.dado: 
+            if numeroApt  == self.inicio.numeroApt: 
                 self.inicio = self.inicio.prox 
                 removeu = True
             else: 
                 ant = self.inicio
                 aux = self.inicio.prox 
                 while aux: 
-                    if valor == aux.dado:
+                    if numeroApt == aux.numeroApt:
                         ant.prox = aux.prox 
                         removeu = True
                         break
@@ -63,7 +67,7 @@ class Lista:
                         ant  = aux
                         aux = aux.prox
             if removeu:
-                print(f"{valor} - Elemento removido!")
+                print(f"{numeroApt} - Elemento removido!")
             else:
-                print(f"{valor} - Não encontrado!")
+                print(f"{numeroApt} - Não encontrado!")
             self.imprimir()

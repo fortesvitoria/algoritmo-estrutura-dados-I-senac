@@ -21,39 +21,44 @@ from Apartamento import Apartamento
 from FilaApt import Fila
 from ListaApt import Lista
 
-# 1. Setup inicial
-t1 = Torre(1, "Torre A", "Rua das Flores, 123")
-lista_vagas = Lista()
-fila_espera = Fila()
+#criando estruturas
+fila = Fila()
+lista = Lista()
 
-# Criando alguns apartamentos
-apt1 = Apartamento(101, "101", 10, t1) # Já tem vaga 10
-apt2 = Apartamento(102, "102", 5, t1)  # Já tem vaga 5
-apt3 = Apartamento(201, "201", "Aguardando", t1) # Sem vaga
+#criando torres
+t1 = Torre(1,"Torre A","Rua A, nº 55")
 
-# Adicionando na lista ordenada (o 102 deve vir antes do 101)
-lista_vagas.add(apt1)
-lista_vagas.add(apt2)
-fila_espera.add(apt3)
+#criando apts
+a1 = Apartamento(1,101,t1)
+a2 = Apartamento(2,102,t1)
+a3 = Apartamento(3,103,t1) 
+a4 = Apartamento(4,104,t1) 
 
-print("ESTADO INICIAL:")
-lista_vagas.imprimir()
-fila_espera.imprimir()
+#add na fila
+fila.add(a1)
+fila.add(a2)    
+fila.add(a3)
+fila.add(a4)
 
-# 2. PROCESSO DE TROCA (Requisito 3)
-print("\n--- O Apt 102 está saindo e liberando a vaga 5 ---")
-liberado = lista_vagas.remover("102") # Remove o 102 que tinha a vaga 5
+# Liberando vagas
+print("\n--- Liberando vaga 1")
+apt = fila.remover(1)
+lista.add(apt)
 
-if liberado:
-    vaga_livre = liberado.numeroVaga
-    liberado.numeroVaga = "Aguardando vaga"
-    fila_espera.add(liberado) # Vai para o fim da fila
-    
-    # Primeiro da fila ganha a vaga
-    proximo = fila_espera.remover(vaga_livre)
-    if proximo:
-        lista_vagas.add_ordenado(proximo)
+# Liberando vagas
+print("\n--- Liberando vaga 3")
+apt = fila.remover(3)
+lista.add(apt)
 
-print("\nESTADO FINAL:")
-lista_vagas.imprimir()
-fila_espera.imprimir()
+# Imprimir tudo
+fila.imprimir()
+lista.imprimir()
+
+# Remover da lista
+removido = lista.remover(102)
+if removido:
+    fila.add(removido)
+
+# Imprimir tudo
+fila.imprimir()
+lista.imprimir()

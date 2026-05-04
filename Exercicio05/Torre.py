@@ -18,9 +18,9 @@ vaga de garagem, deve ir para a Lista Encadeada, que deverá estar ordenada pelo
 
 class Torre:
     def __init__(self, id, nome, endereco):
-        self.__id = id
+        self.id = id
         self.nome = nome
         self.endereco = endereco
 
     def __str__(self): 
-        return f"Nome: {self.nome} - Endereço: {self.endereco}"
+        return f"Torre: {self.nome} - Endereço: {self.endereco}"

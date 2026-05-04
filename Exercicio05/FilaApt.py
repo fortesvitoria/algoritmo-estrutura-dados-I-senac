@@ -30,7 +30,7 @@ class Fila:
             self.inicio = apartamento
         else:
             self.fim.prox = apartamento
-        self.fim = apartamento
+        self.fim = apartamento  
         self.imprimir()
     
     def imprimir(self):
@@ -39,19 +39,16 @@ class Fila:
             print("-------- Fila de espera vazia --------\n")
             return 
         aux = self.inicio
-        txt = ""
-        while aux: 
-            txt = '{aux.dado}'
+        while aux:
+            print(aux)
             aux = aux.prox
-        print (txt)
         print(f"{"-"*25}")
     
     def remover(self, numeroVaga):
         if self.inicio is not None:
-            aptRemovido = self.inicio #guarda o primeiro apartamento da fila, para depois retornar ele
+            aptRemovido = self.inicio
             aptRemovido.numeroVaga = numeroVaga # atribui a vaga que o apartamento irá receber
             self.inicio = self.inicio.prox
             if self.inicio is None:
                 self.fim = None
         return aptRemovido
-

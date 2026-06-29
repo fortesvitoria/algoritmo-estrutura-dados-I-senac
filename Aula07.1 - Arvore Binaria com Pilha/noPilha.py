@@ -1,4 +1,5 @@
-class NoFila:
+class NoPilha:
+
     def __init__(self, noArvore):
         self.noArvore = noArvore
         self.prox = None
